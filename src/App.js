@@ -5,7 +5,7 @@ function App() {
   const [pokemon, setPokemon] = useState([]);
 
   const fetchPokemon = () => {
-    return fetch("https://pokeapi.co/api/v2/pokemon")
+    return fetch("https://pokeapi.co/api/v2/pokemon?limit=10000&offset=0")
           .then(response => response.json())
           .then(response => setPokemon(response.results));
   }
@@ -15,11 +15,11 @@ function App() {
   },[])
 
   return (
-    <main>
+    <main className='App'>
       <h1>Pokemon List</h1>
       <ul>
         {pokemon && pokemon.length > 0 && pokemon.map((pokemonObj, index) => (
-            <li key={pokemonObj.id}>{pokemonObj.name}</li>
+            <li className="list" key={pokemonObj.id}>{pokemonObj.name}</li>
           ))}
       </ul>
     </main>
